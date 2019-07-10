@@ -144,8 +144,12 @@ namespace Capstone.Web.DAL
             }
         }
 
+<<<<<<< HEAD
 
         public IList<ParkWeather> GetParkWeather(string parkCode)
+=======
+        public ParkWeather GetParkWeather(string parkCode)
+>>>>>>> 3ce18970c58048af1c0d0ad3f8341cf5f9154321
         {
 
             List<ParkWeather> weather = new List<ParkWeather>();
@@ -200,10 +204,13 @@ namespace Capstone.Web.DAL
             };
         }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 3ce18970c58048af1c0d0ad3f8341cf5f9154321
         public List<SelectListItem> GetParkSelectList()
         {
             List<SelectListItem> output = new List<SelectListItem>();
@@ -215,7 +222,10 @@ namespace Capstone.Web.DAL
                     SqlCommand command = new SqlCommand();
                     command.CommandText = Sql_GetParks;
                     command.Connection = connection;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3ce18970c58048af1c0d0ad3f8341cf5f9154321
 
                     SqlDataReader reader = command.ExecuteReader();
 
