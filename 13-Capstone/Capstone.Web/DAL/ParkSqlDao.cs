@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-﻿using Capstone.Web.Models;
-=======
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
->>>>>>> d509311d06f478e0da036e79a806e8464f471243
+
+using Capstone.Web.Models;
+
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -144,7 +144,6 @@ namespace Capstone.Web.DAL
             }
         }
 
-<<<<<<< HEAD
         public ParkWeather GetParkWeather(string parkCode)
         {
             ParkWeather result = new ParkWeather();
@@ -184,7 +183,7 @@ namespace Capstone.Web.DAL
 
 
         }
-=======
+
         public List<SelectListItem> GetParkSelectList()
         {
             List<SelectListItem> output = new List<SelectListItem>();
@@ -196,7 +195,6 @@ namespace Capstone.Web.DAL
                     SqlCommand command = new SqlCommand();
                     command.CommandText = Sql_GetParks;
                     command.Connection = connection;
->>>>>>> d509311d06f478e0da036e79a806e8464f471243
 
                     SqlDataReader reader = command.ExecuteReader();
 
