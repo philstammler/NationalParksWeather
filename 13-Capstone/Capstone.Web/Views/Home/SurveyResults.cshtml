@@ -1,0 +1,22 @@
+﻿@model List<Capstone.Web.Models.SurveyResultViewModel>
+
+@{
+    ViewData["Title"] = "SurveyResults";
+}
+
+<h2>SurveyResults</h2>
+
+<h4>This is a survey result page!</h4>
+
+<div>
+    @{ 
+        foreach (SurveyResultViewModel item in Model)
+        {
+            <div>
+                <a asp-action="Details" asp-route-data="item.ParkCode"></a>
+            </div>
+            <div><p>@item.ParkName</p></div>
+            <div><p>Total Votes: @item.VoteCount</p></div>
+        }
+    }
+</div>

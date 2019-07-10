@@ -1,4 +1,4 @@
-﻿using Capstone.Web.DAO;
+﻿using Capstone.Web.DAL;
 using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
