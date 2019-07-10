@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using Capstone.Web.Models;
+=======
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+>>>>>>> d509311d06f478e0da036e79a806e8464f471243
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,6 +14,8 @@ namespace Capstone.Web.DAL
     public class ParkSqlDao : IParkDao
     {
         private readonly string connectionString;
+
+        private const string Sql_GetParks = "SELECT * FROM park ORDER BY parkName ASC";
 
 
         public ParkSqlDao(string connectionString)
@@ -45,7 +51,7 @@ namespace Capstone.Web.DAL
                         park.State = Convert.ToString(reader["state"]);
                         park.Acreage = reader["acreage"] as int? ?? default(int);
                         park.ElevationInFeet = reader["elevationInFeet"] as int? ?? default(int);
-                        park.MilesOfTrail = Convert.ToDecimal(reader["milesOfTrail"]); 
+                        park.MilesOfTrail = Convert.ToDecimal(reader["milesOfTrail"]);
                         park.NumberOfCampsites = reader["numberOfCampsites"] as int? ?? default(int);
                         park.Climate = Convert.ToString(reader["climate"]);
                         park.YearFounded = reader["yearFounded"] as int? ?? default(int);
@@ -138,6 +144,7 @@ namespace Capstone.Web.DAL
             }
         }
 
+<<<<<<< HEAD
         public ParkWeather GetParkWeather(string parkCode)
         {
             ParkWeather result = new ParkWeather();
@@ -177,8 +184,43 @@ namespace Capstone.Web.DAL
 
 
         }
+=======
+        public List<SelectListItem> GetParkSelectList()
+        {
+            List<SelectListItem> output = new List<SelectListItem>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand();
+                    command.CommandText = Sql_GetParks;
+                    command.Connection = connection;
+>>>>>>> d509311d06f478e0da036e79a806e8464f471243
 
+                    SqlDataReader reader = command.ExecuteReader();
 
+                    while (reader.Read())
+                    {
+                        SelectListItem item = new SelectListItem();
 
+                        item.Text = Convert.ToString(reader["parkName"]);
+                        item.Value = Convert.ToString(reader["parkCode"]);
+                        output.Add(item);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                output = new List<SelectListItem>();
+            }
+
+            return output;
+        }
     }
 }
+
+
+
+
+

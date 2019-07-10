@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Capstone.Web.DAO
+namespace Capstone.Web.DAL
 {
     public interface ISurvey_ResultSqlDao
     {
