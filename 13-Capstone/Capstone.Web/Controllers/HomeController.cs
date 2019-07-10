@@ -13,11 +13,10 @@ namespace Capstone.Web.Controllers
     {
 
         private IParkDao parkDao;
-        private readonly ISurvey_ResultSqlDao survey_ResultDao;
+        private ISurvey_ResultSqlDao survey_ResultDao;
 
-        public HomeController(IParkDao parkDao, ISurvey_ResultSqlDao survey_ResultDao)
+        public HomeController(IParkDao parkDao)
         {
-            this.survey_ResultDao = survey_ResultDao;
             this.parkDao = parkDao;
         }
 
