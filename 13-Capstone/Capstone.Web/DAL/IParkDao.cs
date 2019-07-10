@@ -15,7 +15,7 @@ namespace Capstone.Web.DAL
         IList<Park> GetParks();
         Park GetPark(string parkCode);
 
-        ParkWeather GetParkWeather(string parkCode);
+        IList<ParkWeather> GetParkWeather(string parkCode);
 
 
         List<SelectListItem> GetParkSelectList();

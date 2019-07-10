@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-﻿using Capstone.Web.Models;
-=======
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
->>>>>>> d509311d06f478e0da036e79a806e8464f471243
+
+using Capstone.Web.Models;
+
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -64,7 +64,7 @@ namespace Capstone.Web.DAL
 
 
                         parks.Add(MapRowToPark(reader));
-                        //parks.Add(MapRowToPark(reader));
+
 
                     }
                 }
@@ -144,47 +144,66 @@ namespace Capstone.Web.DAL
             }
         }
 
-<<<<<<< HEAD
-        public ParkWeather GetParkWeather(string parkCode)
+
+        public IList<ParkWeather> GetParkWeather(string parkCode)
         {
-            ParkWeather result = new ParkWeather();
-            // Create a new connection object
-            using (SqlConnection conn = new SqlConnection(connectionString))
+
+            List<ParkWeather> weather = new List<ParkWeather>();
             {
-                // Open the connection
-                conn.Open();
 
-                string sql = $"SELECT * FROM weather WHERE parkCode = @parkCode";
-
-
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@parkCode", parkCode);
-                // Execute the command
-                SqlDataReader reader = cmd.ExecuteReader();
-
-
-                // Loop through each row
-                while (reader.Read())
+                // Create a new connection object
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    // Create a product
-                    ParkWeather parkWeather = new ParkWeather();
-                    parkWeather.ParkCode = Convert.ToString(reader["parkCode"]);
-                    parkWeather.FiveDayForcastValue = Convert.ToInt32(reader["fiveDayForecastValue"]);
-                    parkWeather.Low = Convert.ToInt32(reader["low"]);
-                    parkWeather.High = Convert.ToInt32(reader["high"]);
-                    parkWeather.Forecast = Convert.ToString(reader["forecast"]);
+                    // Open the connection
+                    conn.Open();
 
-                    result = parkWeather;
+                    string sql = $"SELECT * FROM weather WHERE parkCode = @parkCode";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@parkCode", parkCode);
+                    // Execute the command
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Loop through each row
+                    while (reader.Read())
+                    {
+                        // Create a Park
+                        ParkWeather parkWeather = new ParkWeather();
+                        parkWeather.ParkCode = Convert.ToString(reader["parkCode"]);
+                        parkWeather.FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]);
+                        parkWeather.Low = Convert.ToInt32(reader["low"]);
+                        parkWeather.High = Convert.ToInt32(reader["high"]);
+                        parkWeather.Forecast = Convert.ToString(reader["forecast"]);
+
+
+
+
+                        weather.Add(MapRowToWeather(reader));
+
+
+                    }
                 }
-                return result;
             }
-
-
-
+            return weather;
         }
-=======
+
+
+        private ParkWeather MapRowToWeather(SqlDataReader reader)
+        {
+            return new ParkWeather()
+            {
+                ParkCode = Convert.ToString(reader["parkCode"]),
+                FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
+                Low = Convert.ToInt32(reader["low"]),
+                High = Convert.ToInt32(reader["high"]),
+                Forecast = Convert.ToString(reader["forecast"]),
+            };
+        }
+
+
+
+
+
         public List<SelectListItem> GetParkSelectList()
         {
             List<SelectListItem> output = new List<SelectListItem>();
@@ -196,7 +215,7 @@ namespace Capstone.Web.DAL
                     SqlCommand command = new SqlCommand();
                     command.CommandText = Sql_GetParks;
                     command.Connection = connection;
->>>>>>> d509311d06f478e0da036e79a806e8464f471243
+
 
                     SqlDataReader reader = command.ExecuteReader();
 

@@ -30,6 +30,10 @@ namespace Capstone.Web.Controllers
         public IActionResult Detail(string parkCode)
         {
             Park park = parkDao.GetPark(parkCode);
+
+            ViewBag.Weather = parkDao.GetParkWeather(parkCode);
+
+
             return View(park);
         }
 
