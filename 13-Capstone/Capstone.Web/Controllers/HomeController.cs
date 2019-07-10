@@ -26,7 +26,13 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
-      
+        public IActionResult Detail(string parkCode)
+        {
+            Park park = parkDao.GetPark(parkCode);
+            return View(park);
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

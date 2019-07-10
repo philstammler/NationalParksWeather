@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -21,10 +22,6 @@ namespace Capstone.Web.DAL
 
             List<Park> parks = new List<Park>();
             {
-
-
-
-
 
                 // Create a new connection object
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -65,12 +62,10 @@ namespace Capstone.Web.DAL
 
                     }
                 }
-
-
             }
-
             return parks;
         }
+
 
         private Park MapRowToPark(SqlDataReader reader)
         {
@@ -93,6 +88,7 @@ namespace Capstone.Web.DAL
                 NumberOfAnimalSpecies = reader["numberOfAnimalSpecies"] as int? ?? default(int)
             };
         }
+
 
         public Park GetPark(string parkCode)
         {
@@ -125,24 +121,62 @@ namespace Capstone.Web.DAL
                     park.State = Convert.ToString(reader["state"]);
                     park.Acreage = reader["acreage"] as int? ?? default(int);
                     park.ElevationInFeet = reader["elevationInFeet"] as int? ?? default(int);
-                    park.MilesOfTrail = reader["milesOfTrail"] as int? ?? default(int);
+                    park.MilesOfTrail = Convert.ToDecimal(reader["milesOfTrail"]);
                     park.NumberOfCampsites = reader["numberOfCampsites"] as int? ?? default(int);
                     park.Climate = Convert.ToString(reader["climate"]);
                     park.YearFounded = reader["yearFounded"] as int? ?? default(int);
                     park.AnnualVisitorCount = reader["annualVisitorCount"] as int? ?? default(int);
                     park.InspirationalQuote = Convert.ToString(reader["inspirationalQuote"]);
                     park.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
-                    park.ParkDescription = Convert.ToString(reader["parkDesription"]);
+                    park.ParkDescription = Convert.ToString(reader["parkDescription"]);
                     park.EntryFee = reader["entryFee"] as decimal? ?? default(decimal);
                     park.NumberOfAnimalSpecies = reader["numberOfAnimalSpecies"] as int? ?? default(int);
 
                     result = park;
                 }
-
                 return result;
             }
         }
 
+        public ParkWeather GetParkWeather(string parkCode)
+        {
+            ParkWeather result = new ParkWeather();
+            // Create a new connection object
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                // Open the connection
+                conn.Open();
+
+                string sql = $"SELECT * FROM weather WHERE parkCode = @parkCode";
+
+
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@parkCode", parkCode);
+                // Execute the command
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                // Loop through each row
+                while (reader.Read())
+                {
+                    // Create a product
+                    ParkWeather parkWeather = new ParkWeather();
+                    parkWeather.ParkCode = Convert.ToString(reader["parkCode"]);
+                    parkWeather.FiveDayForcastValue = Convert.ToInt32(reader["fiveDayForecastValue"]);
+                    parkWeather.Low = Convert.ToInt32(reader["low"]);
+                    parkWeather.High = Convert.ToInt32(reader["high"]);
+                    parkWeather.Forecast = Convert.ToString(reader["forecast"]);
+
+                    result = parkWeather;
+                }
+                return result;
+            }
+
+
+
+        }
 
 
 
