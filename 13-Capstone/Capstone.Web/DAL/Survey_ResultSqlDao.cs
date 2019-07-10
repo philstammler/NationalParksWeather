@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Capstone.Web.DAO
+namespace Capstone.Web.DAL
 {
     public class Survey_ResultSqlDao : ISurvey_ResultSqlDao
     {

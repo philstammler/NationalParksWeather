@@ -13,10 +13,11 @@ namespace Capstone.Web.Controllers
     {
 
         private IParkDao parkDao;
+        private readonly ISurvey_ResultSqlDao survey_ResultDao;
 
-        public HomeController(IParkDao parkDao)
+        public HomeController(IParkDao parkDao, ISurvey_ResultSqlDao survey_ResultDao)
         {
-
+            this.survey_ResultDao = survey_ResultDao;
             this.parkDao = parkDao;
         }
 
@@ -25,8 +26,6 @@ namespace Capstone.Web.Controllers
             IList<Park> parks = parkDao.GetParks();
             return View(parks);
         }
-
-      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
