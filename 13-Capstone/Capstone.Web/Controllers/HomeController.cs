@@ -26,6 +26,13 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
+        public IActionResult Survey()
+        {
+            IList<Park> parks = parkDao.GetParks();
+            ViewBag.ParkSelectList = parkDao.GetParkSelectList();
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
