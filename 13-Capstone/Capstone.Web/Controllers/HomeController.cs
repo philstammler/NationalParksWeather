@@ -10,13 +10,13 @@ using Capstone.Web.DAL;
 using System.Dynamic;
 
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Http;
 
 namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
-
+        private readonly string TEMP_SETTING_SESSION_KEY = "Temp_Setting";
         private IParkDao parkDao;
         private ISurvey_ResultSqlDao survey_ResultDao;
 
@@ -69,6 +69,37 @@ namespace Capstone.Web.Controllers
             return View(surveys);
         }
 
+        [HttpGet]
+        public IActionResult Temperature()
+        {
+            Temperature model = new Temperature();
+            model.TempSettings = GetCurrentTempSettings();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Temperature(Temperature model)
+        {
+            SaveCurrentTempSettings(model.TempSettings);
+            return RedirectToAction("Index");
+        }
+
+        private string GetCurrentTempSettings()
+        {
+            string setting = HttpContext.Session.GetString(TEMP_SETTING_SESSION_KEY);
+
+            if (string.IsNullOrWhiteSpace(setting))
+            {
+                setting = "F";
+                SaveCurrentTempSettings(setting);
+            }
+            return setting;
+        }
+
+        private void SaveCurrentTempSettings(string setting)
+        {
+            HttpContext.Session.SetString(TEMP_SETTING_SESSION_KEY, setting);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
