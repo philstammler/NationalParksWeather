@@ -2,38 +2,34 @@
 
 @{
     ViewData["Title"] = "Survey";
+    List<SelectListItem> parks = ViewBag.ParkSelectList as List<SelectListItem>;
 }
 
 <h2>Survey</h2>
 
-<h4>Survey_Result</h4>
+<h4>Look at this spicy survey!</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Survey">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ParkCode" class="control-label"></label>
-                <input asp-for="ParkCode" class="form-control" />
+                <label asp-for="ParkCode" class="control-label">What Is Your Favorite National Park?</label>
+                <select asp-for="ParkCode" asp-items="@parks" class="form-control"></select>
                 <span asp-validation-for="ParkCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" class="control-label">What is your e-mail address?</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
+                <label asp-for="State" class="control-label">What is your state of residence?  OH, IL, ect</label>
                 <input asp-for="State" class="form-control" />
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ActivityLevel" class="control-label"></label>
+                <label asp-for="ActivityLevel" class="control-label">What is your activity level?</label>
                 <div class="radio-button">
                     <input asp-for="ActivityLevel" type="radio" value="inactive" /> Inactive
                 </div>

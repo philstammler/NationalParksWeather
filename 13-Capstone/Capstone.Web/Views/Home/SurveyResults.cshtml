@@ -1,4 +1,4 @@
-﻿@model List<Capstone.Web.Models.SurveyResultViewModel>
+﻿@model List<SurveyResultViewModel>
 
 @{
     ViewData["Title"] = "SurveyResults";
@@ -13,7 +13,7 @@
         foreach (SurveyResultViewModel item in Model)
         {
             <div>
-                <a asp-action="Details" asp-route-data="item.ParkCode"></a>
+                <a asp-action="Details" asp-route-data="item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" /></a>
             </div>
             <div><p>@item.ParkName</p></div>
             <div><p>Total Votes: @item.VoteCount</p></div>

@@ -15,9 +15,10 @@ namespace Capstone.Web.Controllers
         private IParkDao parkDao;
         private ISurvey_ResultSqlDao survey_ResultDao;
 
-        public HomeController(IParkDao parkDao)
+        public HomeController(IParkDao parkDao/*, ISurvey_ResultSqlDao survey_ResultDao*/)
         {
             this.parkDao = parkDao;
+            //this.survey_ResultDao = survey_ResultDao;
         }
 
         public IActionResult Index()
@@ -38,12 +39,27 @@ namespace Capstone.Web.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult Survey()
         {
             IList<Park> parks = parkDao.GetParks();
             ViewBag.ParkSelectList = parkDao.GetParkSelectList();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Survey(Survey_Result surveyResult)
+        {
+            surveyResult.State = surveyResult.State.ToUpper();
+            survey_ResultDao.AddResult(surveyResult);
+            return RedirectToAction("SurveyResults");
+        }
+
+        public IActionResult SurveyResults()
+        {
+            List<SurveyResultViewModel> surveys = new List<SurveyResultViewModel>();
+            surveys = survey_ResultDao.GetTopRankedParks();
+            return View(surveys);
         }
 
 
