@@ -2,9 +2,348 @@
 
 @{
     ViewData["Title"] = "Detail";
+    string image = Model.ParkCode + ".jpg";
+
+
 }
 
-<h2>Detail</h2>
+<style>
+    body {
+        background-color: #edf6f8;
+    }
+    everythingtoweather {
+        font-family: 'Leelawadee UI';
+        
+    }
+    #welcome{
+        font-weight:600;
+        font-size: xx-large;
+        text-align: center;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "pic pic quote quote" "pic pic info info" "pic pic info info";
+    }
+
+
+    .pic {
+        grid-area: pic;
+    }
+
+    .quote {
+        grid-area: quote;
+        font-style:italic;
+    }
+
+    .info {
+        grid-area: info;
+        font-size:larger;
+    }
+
+    /*/////////weather///////*/
+
+  
+    .lt-grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.3fr 1.7fr;
+        grid-template-areas: "info Weather Weather Weather Weather Weather" "parkinfo day1 day-2 day-3 day-4 day-5";
+    }
+
+    .lt-info {
+        grid-area: lt-info;
+    }
+
+    .lt-parkinfo {
+        grid-area: lt-parkinfo;
+    }
+
+    .lt-Weather {
+        grid-area: lt-Weather;
+    }
+
+    .lt-day1 {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-rows: 0.5fr 1.5fr 1fr 1fr;
+        grid-template-areas: "day day" "low high" "pic pic" "message message";
+        grid-area: lt-day1;
+    }
+
+    .lt-day {
+        grid-area: lt-day;
+    }
+
+    .lt-low {
+        grid-area: lt-low;
+    }
+
+    .lt-high {
+        grid-area: lt-high;
+    }
+
+    .lt-pic {
+        grid-area: lt-pic;
+    }
+
+    .lt-message {
+        grid-area: lt-message;
+    }
+
+    .lt-day-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "day2 day2" "low2 high2" "pic2 pic2" "message2 message2";
+        grid-area: lt-day-2;
+    }
+
+    .lt-day2 {
+        grid-area: lt-day2;
+    }
+
+    .lt-low2 {
+        grid-area: lt-low2;
+    }
+
+    .lt-high2 {
+        grid-area: lt-high2;
+    }
+
+    .lt-pic2 {
+        grid-area: lt-pic2;
+    }
+
+    .lt-message2 {
+        grid-area: lt-message2;
+    }
+
+    .lt-day-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "day3 day3" "low3 high3" "pic3 pic3" "message3 message3";
+        grid-area: lt-day-3;
+    }
+
+    .lt-day3 {
+        grid-area: lt-day3;
+    }
+
+    .lt-low3 {
+        grid-area: lt-low3;
+    }
+
+    .lt-high3 {
+        grid-area: lt-high3;
+    }
+
+    .lt-pic3 {
+        grid-area: lt-pic3;
+    }
+
+    .lt-message3 {
+        grid-area: lt-message3;
+    }
+
+    .lt-day-4 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "day4 day4" "low4 high4" "pic4 pic4" "message4 message4";
+        grid-area: lt-day-4;
+    }
+
+    .lt-day4 {
+        grid-area: lt-day4;
+    }
+
+    .lt-low4 {
+        grid-area: lt-low4;
+    }
+
+    .lt-high4 {
+        grid-area: lt-high4;
+    }
+
+    .lt-pic4 {
+        grid-area: lt-pic4;
+    }
+
+    .lt-message4 {
+        grid-area: lt-message4;
+    }
+
+    .lt-day-5 {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "day5 day5" "low5 high5" "pic5 pic5" "message5 message5";
+        grid-area: lt-day-5;
+    }
+
+    .lt-day5 {
+        grid-area: lt-day5;
+    }
+
+    .lt-low5 {
+        grid-area: lt-low5;
+    }
+
+    .lt-high5 {
+        grid-area: lt-high5;
+    }
+
+    .lt-pic5 {
+        grid-area: lt-pic5;
+    }
+
+    .lt-message5 {
+        grid-area: lt-message5;
+    }
+
+
+  
+
+</style>
+<fullpage>
+
+
+    <everythingtoweather>
+
+
+
+
+        <div>
+            <h4 id="welcome">Welcome to <i>Beautiful</i> @Model.ParkName!</h4>
+
+            <hr />
+            <div class="grid-container">
+                <div class="pic"><img id="parkPic" src="~/images/parks/@image" /> </div>
+                <div class="quote">
+                    <p> @Model.InspirationalQuote</p>
+                    <p id="source">- @Model.InspirationalQuoteSource</p>
+                </div>
+                <div class="info">@Model.ParkDescription</div>
+            </div>
+
+            <hr />
+
+
+
+    @*/////////////////////WEATHER BOX///////////////////////////*@
+
+    <div class="grid-container">
+        
+        <div class="parkinfo">
+            <dl class="dl-horizontal">
+                <h2>Info</h2>
+                <dt>
+                    @Html.DisplayNameFor(model => model.State)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.State)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Acreage)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Acreage)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ElevationInFeet)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ElevationInFeet)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MilesOfTrail)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MilesOfTrail)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumberOfCampsites)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfCampsites)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Climate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Climate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.YearFounded)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.YearFounded)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnnualVisitorCount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AnnualVisitorCount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EntryFee)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EntryFee)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumberOfAnimalSpecies)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfAnimalSpecies)
+                </dd>
+            </dl>
+        </div></div>
+        <div class="Weather"><h2>Weather</h2></div>
+    </everythingtoweather>
+        <div class="day1">
+            <div class="day"></div>
+            <div class="low"></div>
+            <div class="high"></div>
+            <div class="pic"></div>
+            <div class="message"></div>
+        </div>
+        <div class="day-2">
+            <div class="day2"></div>
+            <div class="low2"></div>
+            <div class="high2"></div>
+            <div class="pic2"></div>
+            <div class="message2"></div>
+        </div>
+        <div class="day-3">
+            <div class="day3"></div>
+            <div class="low3"></div>
+            <div class="high3"></div>
+            <div class="pic3"></div>
+            <div class="message3"></div>
+        </div>
+        <div class="day-4">
+            <div class="day4"></div>
+            <div class="low4"></div>
+            <div class="high4"></div>
+            <div class="pic4"></div>
+            <div class="message4"></div>
+        </div>
+        <div class="day-5">
+            <div class="day5"></div>
+            <div class="low5"></div>
+            <div class="high5"></div>
+            <div class="pic5"></div>
+            <div class="message5"></div>
+        </div>
+    </div>
+
+
+
 
 
 
@@ -18,116 +357,14 @@
         </tr>
         @foreach (ParkWeather weather in ViewBag.Weather)
         {
-        <tr>
-            <td>@weather.ParkCode</td>
-            <td>@weather.FiveDayForecastValue</td>
-            <td>@weather.Forecast</td>
-            <td>@weather.Low</td>
-            <td>@weather.High</td>
-        </tr>
+            <tr>
+                <td>@weather.ParkCode</td>
+                <td>@weather.FiveDayForecastValue</td>
+                <td>@weather.Forecast</td>
+                <td>@weather.Low</td>
+                <td>@weather.High</td>
+            </tr>
         }
     </table>
 
-<div>
-    <h4>Park</h4>
-    <div class="weather">
-
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ParkCode)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ParkCode)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ParkName)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ParkName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.State)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.State)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Acreage)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Acreage)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ElevationInFeet)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ElevationInFeet)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.MilesOfTrail)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.MilesOfTrail)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.NumberOfCampsites)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.NumberOfCampsites)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Climate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Climate)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.YearFounded)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.YearFounded)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.AnnualVisitorCount)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.AnnualVisitorCount)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.InspirationalQuote)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.InspirationalQuote)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.InspirationalQuoteSource)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.InspirationalQuoteSource)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ParkDescription)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ParkDescription)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.EntryFee)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.EntryFee)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.NumberOfAnimalSpecies)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.NumberOfAnimalSpecies)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</div>
+</fullpage>
