@@ -176,13 +176,12 @@ namespace Capstone.Web.DAL
                         parkWeather.Low = Convert.ToInt32(reader["low"]);
                         parkWeather.High = Convert.ToInt32(reader["high"]);
                         parkWeather.Forecast = Convert.ToString(reader["forecast"]);
+                        parkWeather.WeatherImage = parkWeather.GetWeatherImage();
+                        parkWeather.WeatherReccomendation = parkWeather.GetWeatherRec();
+                        parkWeather.TempRecommendation = parkWeather.GetTempRec();
 
-
-
-
-                        weather.Add(MapRowToWeather(reader));
-
-
+                        weather.Add(parkWeather);
+                        //weather.Add(MapRowToWeather(reader));
                     }
                 }
             }
@@ -190,17 +189,18 @@ namespace Capstone.Web.DAL
         }
 
 
-        private ParkWeather MapRowToWeather(SqlDataReader reader)
-        {
-            return new ParkWeather()
-            {
-                ParkCode = Convert.ToString(reader["parkCode"]),
-                FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
-                Low = Convert.ToInt32(reader["low"]),
-                High = Convert.ToInt32(reader["high"]),
-                Forecast = Convert.ToString(reader["forecast"]),
-            };
-        }
+        //private ParkWeather MapRowToWeather(SqlDataReader reader)
+        //{
+        //    return new ParkWeather()
+        //    {
+        //        ParkCode = Convert.ToString(reader["parkCode"]),
+        //        FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
+        //        Low = Convert.ToInt32(reader["low"]),
+        //        High = Convert.ToInt32(reader["high"]),
+        //        Forecast = Convert.ToString(reader["forecast"]),
+        //        WeatherImage = 
+        //    };
+        //}
 
 
         public List<SelectListItem> GetParkSelectList()

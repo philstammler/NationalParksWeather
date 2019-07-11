@@ -12,6 +12,7 @@ namespace Capstone.Web.Models
         [Required]
         [Display(Name = "Temp Display")]
         public string TempSettings { get; set; }
+
         public List<SelectListItem> Options
         {
             get

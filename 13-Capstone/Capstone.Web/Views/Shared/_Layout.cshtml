@@ -6,9 +6,10 @@
         #logo {
             max-height: 20px;
         }
-        #mainlogo{
-            max-height: 100px;
 
+        #mainlogo {
+            max-height: 100px;
+            margin: 50px;
         }
     </style>
 
@@ -32,9 +33,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div id="headerimg" ><a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img id="mainlogo" src="~/images/logo.png"></a></div>
+        <nav class="navbar navbar-inverse @*navbar-fixed-top*@">
             <div class="container">
-                <div><a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img id="mainlogo" src="~/images/logo.png"></a></div>
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>

@@ -4,139 +4,139 @@
     ViewData["Title"] = "Detail";
     string image = Model.Park.ParkCode + ".jpg";
 
-    string weatherImg0 = "";
-    if (@Model.Weather[0].Forecast == "rain")
-    {
-        weatherImg0 = "rain.png";
-    }
-    else if (@Model.Weather[0].Forecast == "cloudy")
-    {
-        weatherImg0 = "cloudy.png";
-    }
-    else if (@Model.Weather[0].Forecast == "partly cloudy")
-    {
-        weatherImg0 = "partlyCloudy.png";
-    }
-    else if (@Model.Weather[0].Forecast == "snow")
-    {
-        weatherImg0 = "snow.png";
-    }
-    else if (@Model.Weather[0].Forecast == "sunny")
-    {
-        weatherImg0 = "sunny.png";
-    }
-    else if (@Model.Weather[0].Forecast == "thunderstorms")
-    {
-        weatherImg0 = "thunderstorms.png";
-    }
+    //string weatherImg0 = "";
+    //if (@Model.Weather[0].Forecast == "rain")
+    //{
+    //    weatherImg0 = "rain.png";
+    //}
+    //else if (@Model.Weather[0].Forecast == "cloudy")
+    //{
+    //    weatherImg0 = "cloudy.png";
+    //}
+    //else if (@Model.Weather[0].Forecast == "partly cloudy")
+    //{
+    //    weatherImg0 = "partlyCloudy.png";
+    //}
+    //else if (@Model.Weather[0].Forecast == "snow")
+    //{
+    //    weatherImg0 = "snow.png";
+    //}
+    //else if (@Model.Weather[0].Forecast == "sunny")
+    //{
+    //    weatherImg0 = "sunny.png";
+    //}
+    //else if (@Model.Weather[0].Forecast == "thunderstorms")
+    //{
+    //    weatherImg0 = "thunderstorms.png";
+    //}
 
-    string weatherImg1 = "";
-    if (@Model.Weather[1].Forecast == "rain")
-    {
-        weatherImg1 = "rain.png";
-    }
-    else if (@Model.Weather[1].Forecast == "cloudy")
-    {
-        weatherImg1 = "cloudy.png";
-    }
-    else if (@Model.Weather[1].Forecast == "partly cloudy")
-    {
-        weatherImg1 = "partlyCloudy.png";
-    }
-    else if (@Model.Weather[1].Forecast == "snow")
-    {
-        weatherImg1 = "snow.png";
-    }
-    else if (@Model.Weather[1].Forecast == "sunny")
-    {
-        weatherImg1 = "sunny.png";
-    }
-    else if (@Model.Weather[1].Forecast == "thunderstorms")
-    {
-        weatherImg1 = "thunderstorms.png";
-    }
-
-
-    string weatherImg2 = "";
-    if (@Model.Weather[2].Forecast == "rain")
-    {
-        weatherImg2 = "rain.png";
-    }
-    else if (@Model.Weather[2].Forecast == "cloudy")
-    {
-        weatherImg2 = "cloudy.png";
-    }
-    else if (@Model.Weather[2].Forecast == "partly cloudy")
-    {
-        weatherImg2 = "partlyCloudy.png";
-    }
-    else if (@Model.Weather[2].Forecast == "snow")
-    {
-        weatherImg2 = "snow.png";
-    }
-
-    else if (@Model.Weather[2].Forecast == "sunny")
-    {
-        weatherImg2 = "sunny.png";
-    }
-    else if (@Model.Weather[2].Forecast == "thunderstorms")
-    {
-        weatherImg2 = "thunderstorms.png";
-    }
+    //string weatherImg1 = "";
+    //if (@Model.Weather[1].Forecast == "rain")
+    //{
+    //    weatherImg1 = "rain.png";
+    //}
+    //else if (@Model.Weather[1].Forecast == "cloudy")
+    //{
+    //    weatherImg1 = "cloudy.png";
+    //}
+    //else if (@Model.Weather[1].Forecast == "partly cloudy")
+    //{
+    //    weatherImg1 = "partlyCloudy.png";
+    //}
+    //else if (@Model.Weather[1].Forecast == "snow")
+    //{
+    //    weatherImg1 = "snow.png";
+    //}
+    //else if (@Model.Weather[1].Forecast == "sunny")
+    //{
+    //    weatherImg1 = "sunny.png";
+    //}
+    //else if (@Model.Weather[1].Forecast == "thunderstorms")
+    //{
+    //    weatherImg1 = "thunderstorms.png";
+    //}
 
 
-    string weatherImg3 = "";
-    if (@Model.Weather[3].Forecast == "rain")
-    {
-        weatherImg3 = "rain.png";
-    }
-    else if (@Model.Weather[3].Forecast == "cloudy")
-    {
-        weatherImg3 = "cloudy.png";
-    }
-    else if (@Model.Weather[3].Forecast == "partly cloudy")
-    {
-        weatherImg3 = "partlyCloudy.png";
-    }
-    else if (@Model.Weather[3].Forecast == "snow")
-    {
-        weatherImg3 = "snow.png";
-    }
-    else if (@Model.Weather[3].Forecast == "sunny")
-    {
-        weatherImg3 = "sunny.png";
-    }
-    else if (@Model.Weather[3].Forecast == "thunderstorms")
-    {
-        weatherImg3 = "thunderstorms.png";
-    }
+    //string weatherImg2 = "";
+    //if (@Model.Weather[2].Forecast == "rain")
+    //{
+    //    weatherImg2 = "rain.png";
+    //}
+    //else if (@Model.Weather[2].Forecast == "cloudy")
+    //{
+    //    weatherImg2 = "cloudy.png";
+    //}
+    //else if (@Model.Weather[2].Forecast == "partly cloudy")
+    //{
+    //    weatherImg2 = "partlyCloudy.png";
+    //}
+    //else if (@Model.Weather[2].Forecast == "snow")
+    //{
+    //    weatherImg2 = "snow.png";
+    //}
+
+    //else if (@Model.Weather[2].Forecast == "sunny")
+    //{
+    //    weatherImg2 = "sunny.png";
+    //}
+    //else if (@Model.Weather[2].Forecast == "thunderstorms")
+    //{
+    //    weatherImg2 = "thunderstorms.png";
+    //}
 
 
-    string weatherImg4 = "";
-    if (@Model.Weather[4].Forecast == "rain")
-    {
-        weatherImg4 = "rain.png";
-    }
-    else if (@Model.Weather[4].Forecast == "cloudy")
-    {
-        weatherImg4 = "cloudy.png";
-    }
-    else if (@Model.Weather[4].Forecast == "partly cloudy")
-    {
-        weatherImg4 = "partlyCloudy.png";
-    }
-    else if (@Model.Weather[4].Forecast == "snow")
-    {
-        weatherImg4 = "snow.png";
-    }
-    else if (@Model.Weather[4].Forecast == "sunny")
-    {
-        weatherImg4 = "sunny.png";
-    }
-    else if (@Model.Weather[4].Forecast == "thunderstorms")
-    {
-        weatherImg4 = "thunderstorms.png";
-    }
+    //string weatherImg3 = "";
+    //if (@Model.Weather[3].Forecast == "rain")
+    //{
+    //    weatherImg3 = "rain.png";
+    //}
+    //else if (@Model.Weather[3].Forecast == "cloudy")
+    //{
+    //    weatherImg3 = "cloudy.png";
+    //}
+    //else if (@Model.Weather[3].Forecast == "partly cloudy")
+    //{
+    //    weatherImg3 = "partlyCloudy.png";
+    //}
+    //else if (@Model.Weather[3].Forecast == "snow")
+    //{
+    //    weatherImg3 = "snow.png";
+    //}
+    //else if (@Model.Weather[3].Forecast == "sunny")
+    //{
+    //    weatherImg3 = "sunny.png";
+    //}
+    //else if (@Model.Weather[3].Forecast == "thunderstorms")
+    //{
+    //    weatherImg3 = "thunderstorms.png";
+    //}
+
+
+    //string weatherImg4 = "";
+    //if (@Model.Weather[4].Forecast == "rain")
+    //{
+    //    weatherImg4 = "rain.png";
+    //}
+    //else if (@Model.Weather[4].Forecast == "cloudy")
+    //{
+    //    weatherImg4 = "cloudy.png";
+    //}
+    //else if (@Model.Weather[4].Forecast == "partly cloudy")
+    //{
+    //    weatherImg4 = "partlyCloudy.png";
+    //}
+    //else if (@Model.Weather[4].Forecast == "snow")
+    //{
+    //    weatherImg4 = "snow.png";
+    //}
+    //else if (@Model.Weather[4].Forecast == "sunny")
+    //{
+    //    weatherImg4 = "sunny.png";
+    //}
+    //else if (@Model.Weather[4].Forecast == "thunderstorms")
+    //{
+    //    weatherImg4 = "thunderstorms.png";
+    //}
 
 }
 
@@ -338,13 +338,12 @@
     .lt-message5 {
         grid-area: lt-message5;
     }
-<<<<<<< HEAD
-=======
+
 
 
 /*if (atsign)model.TempSettings == "C"*/
 
->>>>>>> 8d2e0e83504b9edea3103db57fe3628312faf52b
+
 </style>
 <fullpage>
 
@@ -368,7 +367,7 @@
 
     @*/////////////////////WEATHER BOX///////////////////////////*@
 
-    <div class="grid-container">
+    <div class="lt-grid-container">
         <div>
             <div class="parkinfo">
                 <dl class="dl-horizontal">
@@ -440,39 +439,39 @@
         <div class="Weather"><h2>Weather</h2></div>
 
         <div class="day1">
-            <div class="day">Today!</div>
+            <div class="day">Today</div>
             <div class="low">Low: @Model.Weather[0].Low</div>
             <div class="high">High: @Model.Weather[0].High</div>
-            <div class="pic"><img src="~/images/weather/@weatherImg0" /></div>
-            <div class="message"></div>
+            <div class="pic"><img src="~/images/weather/@Model.Weather[0].WeatherImage" /></div>
+            <div class="message">@Model.Weather[0].TempRecommendation @Model.Weather[0].WeatherReccomendation </div>
         </div>
         <div class="day-2">
-            <div class="day2"></div>
-            <div class="low2"></div>
-            <div class="high2"></div>
-            <div class="pic2"></div>
-            <div class="message2"></div>
+            <div class="day2">Tomorrow</div>
+            <div class="low2">Low: @Model.Weather[1].Low</div>
+            <div class="high2">High: @Model.Weather[1].High</div>
+            <div class="pic2"><img src="~/images/weather/@Model.Weather[1].WeatherImage" /></div>
+            <div class="message2">@Model.Weather[1].TempRecommendation @Model.Weather[1].WeatherReccomendation </div>
         </div>
         <div class="day-3">
-            <div class="day3"></div>
-            <div class="low3"></div>
-            <div class="high3"></div>
-            <div class="pic3"></div>
-            <div class="message3"></div>
+            <div class="day3">The Day After Tomorrow</div>
+            <div class="low3">Low: @Model.Weather[2].Low</div>
+            <div class="high3">High: @Model.Weather[2].High</div>
+            <div class="pic3"><img src="~/images/weather/@Model.Weather[2].WeatherImage" /></div>
+            <div class="message3">@Model.Weather[2].TempRecommendation @Model.Weather[2].WeatherReccomendation </div>
         </div>
         <div class="day-4">
-            <div class="day4"></div>
-            <div class="low4"></div>
-            <div class="high4"></div>
-            <div class="pic4"></div>
-            <div class="message4"></div>
+            <div class="day4">The Day After That</div>
+            <div class="low4">Low: @Model.Weather[3].Low</div>
+            <div class="high4">High: @Model.Weather[3].High</div>
+            <div class="pic4"><img src="~/images/weather/@Model.Weather[3].WeatherImage" /></div>
+            <div class="message4">@Model.Weather[3].TempRecommendation @Model.Weather[3].WeatherReccomendation </div>
         </div>
         <div class="day-5">
-            <div class="day5"></div>
-            <div class="low5"></div>
-            <div class="high5"></div>
-            <div class="pic5"></div>
-            <div class="message5"></div>
+            <div class="day5">4 Days From Now</div>
+            <div class="low5">Low: @Model.Weather[4].Low</div>
+            <div class="high5">High: @Model.Weather[4].High</div>
+            <div class="pic5"><img src="~/images/weather/@Model.Weather[4].WeatherImage" /></div>
+            <div class="message5">@Model.Weather[4].TempRecommendation @Model.Weather[4].WeatherReccomendation </div>
         </div>
 
 

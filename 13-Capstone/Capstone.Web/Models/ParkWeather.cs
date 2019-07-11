@@ -14,80 +14,86 @@ namespace Capstone.Web.Models
         public string Forecast { get; set; }
         public string WeatherImage { get; set; }
         public string WeatherReccomendation { get; set; }
-        public string TempReccomendation { get; set; }
+        public string TempRecommendation { get; set; }
 
 
-        public ParkWeather()
+        public string GetWeatherImage()
         {
+
+            string weatherImage = "";
             if (Forecast == "rain")
             {
-                WeatherImage = "rain.png";
-                WeatherReccomendation = "Better pack your rain gear and wear waterproof shoes!";
+                weatherImage = "rain.png";
             }
             else if (Forecast == "cloudy")
             {
-                WeatherImage = "cloudy.png";
-                WeatherReccomendation = "";
+                weatherImage = "cloudy.png";
             }
             else if (Forecast == "partly cloudy")
             {
-                WeatherImage = "partlyCloudy.png";
-                WeatherReccomendation = "";
+                weatherImage = "partlyCloudy.png";
             }
             else if (Forecast == "snow")
             {
-                WeatherImage = "snow.png";
-                WeatherReccomendation = "Be sure to bring snowshoes";
+                weatherImage = "snow.png";
             }
             else if (Forecast == "sunny")
             {
-                WeatherImage = "sunny.png";
-                WeatherReccomendation = "Pack sunscreen";
+                weatherImage = "sunny.png";
             }
             else if (Forecast == "thunderstorms")
             {
-                WeatherImage = "thunderstorms.png";
-                WeatherReccomendation = "Seek shelter. Avoid Exposed Ridges";
+                weatherImage = "thunderstorms.png";
+            }
+            return weatherImage;
+        }
+
+        public string GetWeatherRec()
+        {
+            string weatherRec = "";
+            if (Forecast == "rain")
+            {
+                weatherRec = "Better pack your rain gear and wear waterproof shoes!";
             }
 
-
-
-
-
-
+            else if (Forecast == "snow")
+            {
+                weatherRec = "Be sure to bring snowshoes";
+            }
+            else if (Forecast == "sunny")
+            {
+                weatherRec = "Pack sunscreen";
+            }
+            else if (Forecast == "thunderstorms")
+            {
+                weatherRec = "Seek shelter. Avoid Exposed Ridges.";
+            }
+        
+         
+            return weatherRec;
 
         }
 
+        public string GetTempRec()
+        {
+            string tempRec = "";
+
+            if (High > 75)
+            {
+                tempRec = "Bring an extra gallon of water.";
+            }
+            else if (High - Low > 20)
+            {
+                tempRec = "Wear breathable layers.";
+            }
+            else if (Low < 20)
+            {
+                tempRec = "Beware! Exposure to fridgid temperatures is dangerous!";
+            }
+            return tempRec;
+        }
     }
 
 }
 
 
-//if (@Model.Weather[0].Forecast == "rain")
-//    {
-//        weatherImg0 = "rain.png";
-//        weatherMsg0 = "Better pack your rain gear and wear waterproof shoes!";
-//    }
-//    else if (@Model.Weather[0].Forecast == "cloudy")
-//    {
-//        weatherImg0 = "cloudy.png";
-//    }
-//    else if (@Model.Weather[0].Forecast == "partly cloudy")
-//    {
-//        weatherImg0 = "partlyCloudy.png";
-//    }
-//    else if (@Model.Weather[0].Forecast == "snow")
-//    {
-//        weatherImg0 = "snow.png";
-//        weatherMsg0 = "Better pack your snowshoes!";
-//    }
-//    else if (@Model.Weather[0].Forecast == "sunny")
-//    {
-//        weatherImg0 = "sunny.png";
-//        weatherMsg0 = "Bring sunscreen";
-//    }
-//    else if (@Model.Weather[0].Forecast == "thunderstorms")
-//    {
-//        weatherImg0 = "thunderstorms.png";
-//        weatherMsg0 = "Seek shelter! Avoid hking on exposed ridges!";
-//    }
