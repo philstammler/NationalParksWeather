@@ -1,5 +1,7 @@
 ﻿@model List<SurveyResultViewModel>
 
+<link href="/css/surveyresultresults.css" rel="stylesheet">
+
 @{
     ViewData["Title"] = "SurveyResults";
 }
@@ -8,15 +10,21 @@
 
 <h4>This is a survey result page!</h4>
 
-<div>
-    @{ 
+<div class="top-ranked-parks">
+    @{
         foreach (SurveyResultViewModel item in Model)
         {
-            <div>
-                <a asp-action="Details" asp-route-data="item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" /></a>
+            <div class="parks">
+                <a asp-action="Details" asp-route-data="item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" class="park-image" /></a>
             </div>
-            <div><p>@item.ParkName</p></div>
-            <div><p>Total Votes: @item.VoteCount</p></div>
+            <div class="park-info">
+                <div class="park-name">
+                    <p>@item.ParkName</p>
+                </div>
+                <div class="total-votes">
+                    <p><strong>Total Votes: @item.VoteCount</strong></p>
+                </div>
+            </div>
         }
     }
 </div>

@@ -13,4 +13,13 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\css\sureyresultresults.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\surveyresult.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

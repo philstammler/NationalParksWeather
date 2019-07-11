@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,8 +18,6 @@ namespace Capstone.Web.Models
         [Required]
         public string Email { get; set; }
 
-        [StringLength(2)]
-        [MinLength(2)]
         [Required]
         public string State { get; set; }
 

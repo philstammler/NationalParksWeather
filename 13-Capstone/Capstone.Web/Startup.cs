@@ -31,8 +31,14 @@ namespace Capstone.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddTransient<IParkDao, ParkSqlDao>(m => new ParkSqlDao(Configuration.GetConnectionString("NPGeek")));
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(15);//security is paramount when looking at someone's favorite park
+                options.Cookie.HttpOnly = true;
+            });
 
+            services.AddTransient<IParkDao, ParkSqlDao>(m => new ParkSqlDao(Configuration.GetConnectionString("NPGeek")));
+            services.AddTransient<ISurvey_ResultSqlDao, Survey_ResultSqlDao>(m => new Survey_ResultSqlDao(Configuration.GetConnectionString("NPGeek")));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -52,6 +58,7 @@ namespace Capstone.Web
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
