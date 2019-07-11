@@ -32,7 +32,7 @@ namespace Capstone.Web
             });
 
             services.AddTransient<IParkDao, ParkSqlDao>(m => new ParkSqlDao(Configuration.GetConnectionString("NPGeek")));
-
+            services.AddTransient<ISurvey_ResultSqlDao, Survey_ResultSqlDao>(m => new Survey_ResultSqlDao(Configuration.GetConnectionString("NPGeek")));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

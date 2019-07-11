@@ -15,10 +15,10 @@ namespace Capstone.Web.Controllers
         private IParkDao parkDao;
         private ISurvey_ResultSqlDao survey_ResultDao;
 
-        public HomeController(IParkDao parkDao/*, ISurvey_ResultSqlDao survey_ResultDao*/)
+        public HomeController(IParkDao parkDao, ISurvey_ResultSqlDao survey_ResultDao)
         {
             this.parkDao = parkDao;
-            //this.survey_ResultDao = survey_ResultDao;
+            this.survey_ResultDao = survey_ResultDao;
         }
 
         public IActionResult Index()
