@@ -18,11 +18,8 @@ namespace Capstone.Web.Models
         [Required]
         public string Email { get; set; }
 
-        [StringLength(2)]
-        [MinLength(2)]
         [Required]
         public string State { get; set; }
-        public IEnumerable<SelectListItem> States { get; set; }
 
         [Required]
         public string ActivityLevel { get; set; }
