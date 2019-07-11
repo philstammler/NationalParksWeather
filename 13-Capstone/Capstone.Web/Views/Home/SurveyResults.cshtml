@@ -15,16 +15,14 @@
         foreach (SurveyResultViewModel item in Model)
         {
             <div class="parks">
-                <div class="park-image">
-                <a asp-action="Details" asp-route-data="item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" class="park-image"/></a>
+                <a asp-action="Details" asp-route-data="item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" class="park-image" /></a>
             </div>
-                <div class="park-info">
-                    <div class="park-name">
-                        <p>@item.ParkName</p>
-                    </div>
-                    <div class="total-votes">
-                        <p>Total Votes: @item.VoteCount</p>
-                    </div>
+            <div class="park-info">
+                <div class="park-name">
+                    <p>@item.ParkName</p>
+                </div>
+                <div class="total-votes">
+                    <p><strong>Total Votes: @item.VoteCount</strong></p>
                 </div>
             </div>
         }
