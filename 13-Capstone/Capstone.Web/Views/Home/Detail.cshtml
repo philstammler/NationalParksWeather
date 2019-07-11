@@ -1,8 +1,8 @@
-﻿@model Capstone.Web.DAL.Park
+﻿@model dynamic
 
 @{
     ViewData["Title"] = "Detail";
-    string image = Model.ParkCode + ".jpg";
+    string image = Model.Park.ParkCode + ".jpg";
 
 
 }
@@ -217,16 +217,17 @@
 
 
         <div>
-            <h4 id="welcome">Welcome to <i>Beautiful</i> @Model.ParkName!</h4>
+            <h4 id="welcome">Welcome to <i>Beautiful</i> @Model.Park.ParkName!</h4>
 
             <hr />
             <div class="grid-container">
                 <div class="pic"><img id="parkPic" src="~/images/parks/@image" /> </div>
                 <div class="quote">
-                    <p> @Model.InspirationalQuote</p>
-                    <p id="source">- @Model.InspirationalQuoteSource</p>
+                    <p> @Model.Park.InspirationalQuote</p>
+                    <p id="source">- @Model.Park.InspirationalQuoteSource</p>
+                    <p id="source">- @Model.Weather[0].High</p>
                 </div>
-                <div class="info">@Model.ParkDescription</div>
+                <div class="info">@Model.Park.ParkDescription</div>
             </div>
 
             <hr />
@@ -235,7 +236,7 @@
 
     @*/////////////////////WEATHER BOX///////////////////////////*@
 
-    <div class="grid-container">
+    @*<div class="grid-container">
         
         <div class="parkinfo">
             <dl class="dl-horizontal">
@@ -302,7 +303,7 @@
                     @Html.DisplayFor(model => model.NumberOfAnimalSpecies)
                 </dd>
             </dl>
-        </div></div>
+        </div></div>*@
         <div class="Weather"><h2>Weather</h2></div>
     </everythingtoweather>
         <div class="day1">
@@ -347,7 +348,7 @@
 
 
 
-    <table>
+    @*<table>
         <tr>
             <th>Park</th>
             <th>fivedayid</th>
@@ -367,4 +368,4 @@
         }
     </table>
 
-</fullpage>
+</fullpage>*@

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
 using Capstone.Web.DAL;
+using System.Dynamic;
 
 namespace Capstone.Web.Controllers
 {
@@ -30,12 +31,14 @@ namespace Capstone.Web.Controllers
 
         public IActionResult Detail(string parkCode)
         {
-            Park park = parkDao.GetPark(parkCode);
 
-            ViewBag.Weather = parkDao.GetParkWeather(parkCode);
+            dynamic mymodel = new ExpandoObject();
+            mymodel.Park = parkDao.GetPark(parkCode);
+
+            mymodel.Weather = parkDao.GetParkWeather(parkCode);
 
 
-            return View(park);
+            return View(mymodel);
         }
 
 
