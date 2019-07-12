@@ -4,7 +4,7 @@
     ViewData["Title"] = "Detail";
     string image = Model.Park.ParkCode + ".jpg";
 
-  
+
 
 }
 
@@ -25,7 +25,6 @@
     }
 
     .grid-container {
-        
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
@@ -33,7 +32,7 @@
     }
 
 
-    .pic {
+    .mainpic {
         grid-area: pic;
     }
 
@@ -51,170 +50,26 @@
         margin-top: 200px;
     }
     /*/////////weather///////*/
+    .Weather{
+        display:inline-flex;
 
-
-    .lt-grid-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 0.3fr 1.7fr;
-        grid-template-areas: "info Weather Weather Weather Weather Weather" "parkinfo day1 day-2 day-3 day-4 day-5";
-    }
-
-    .lt-info {
-        grid-area: lt-info;
-    }
-
-    .lt-parkinfo {
-        grid-area: lt-parkinfo;
-    }
-
-    .lt-Weather {
-        grid-area: lt-Weather;
-    }
-
-    .lt-day1 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 0.5fr 1.5fr 1fr 1fr;
-        grid-template-areas: "day day" "low high" "pic pic" "message message";
-        grid-area: lt-day1;
-    }
-
-    .lt-day {
-        grid-area: lt-day;
-    }
-
-    .lt-low {
-        grid-area: lt-low;
-    }
-
-    .lt-high {
-        grid-area: lt-high;
-    }
-
-    .lt-pic {
-        grid-area: lt-pic;
-    }
-
-    .lt-message {
-        grid-area: lt-message;
-    }
-
-    .lt-day-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-template-areas: "day2 day2" "low2 high2" "pic2 pic2" "message2 message2";
-        grid-area: lt-day-2;
-    }
-
-    .lt-day2 {
-        grid-area: lt-day2;
-    }
-
-    .lt-low2 {
-        grid-area: lt-low2;
-    }
-
-    .lt-high2 {
-        grid-area: lt-high2;
-    }
-
-    .lt-pic2 {
-        grid-area: lt-pic2;
-    }
-
-    .lt-message2 {
-        grid-area: lt-message2;
-    }
-
-    .lt-day-3 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-template-areas: "day3 day3" "low3 high3" "pic3 pic3" "message3 message3";
-        grid-area: lt-day-3;
-    }
-
-    .lt-day3 {
-        grid-area: lt-day3;
-    }
-
-    .lt-low3 {
-        grid-area: lt-low3;
-    }
-
-    .lt-high3 {
-        grid-area: lt-high3;
-    }
-
-    .lt-pic3 {
-        grid-area: lt-pic3;
-    }
-
-    .lt-message3 {
-        grid-area: lt-message3;
-    }
-
-    .lt-day-4 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-template-areas: "day4 day4" "low4 high4" "pic4 pic4" "message4 message4";
-        grid-area: lt-day-4;
-    }
-
-    .lt-day4 {
-        grid-area: lt-day4;
-    }
-
-    .lt-low4 {
-        grid-area: lt-low4;
-    }
-
-    .lt-high4 {
-        grid-area: lt-high4;
-    }
-
-    .lt-pic4 {
-        grid-area: lt-pic4;
-    }
-
-    .lt-message4 {
-        grid-area: lt-message4;
-    }
-
-    .lt-day-5 {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-template-areas: "day5 day5" "low5 high5" "pic5 pic5" "message5 message5";
-        grid-area: lt-day-5;
-    }
-
-    .lt-day5 {
-        grid-area: lt-day5;
-    }
-
-    .lt-low5 {
-        grid-area: lt-low5;
-    }
-
-    .lt-high5 {
-        grid-area: lt-high5;
-    }
-
-    .lt-pic5 {
-        grid-area: lt-pic5;
-    }
-
-    .lt-message5 {
-        grid-area: lt-message5;
     }
 
 
+    .days1 {
+        border-style: solid;
+        margin: 5px;
+        background-color: white;
+        flex: 1 1 auto;
+    }
+    .days {
+        border-style: solid;
+        margin: 5px;
+        background-color:white;
+        flex: 1 1 auto;
+    }
 
-    /*if (atsign)model.TempSettings == "C"*/
+        /*if (atsign)model.TempSettings == "C"*/
 
 
 </style>
@@ -225,7 +80,7 @@
 
     <hr />
     <div class="grid-container">
-        <div class="pic"><img id="parkPic" src="~/images/parks/@image" /> </div>
+        <div class="mainpic"><img id="parkPic" src="~/images/parks/@image" /> </div>
         <div class="quote">
             <p> @Model.Park.InspirationalQuote</p>
             <p id="source">- @Model.Park.InspirationalQuoteSource</p>
@@ -237,12 +92,79 @@
     <hr />
 
 
+    <div class="parkinfo">
+        <dl class="dl-horizontal">
+
+            <dt>
+                State
+            </dt>
+            <dd>
+                @Model.Park.State
+            </dd>
+            <dt>
+                Acreage
+            </dt>
+            <dd>
+                @Model.Park.Acreage
+            </dd>
+            <dt>
+                Elevation (ft)
+            </dt>
+            <dd>
+                @Model.Park.ElevationInFeet
+            </dd>
+            <dt>
+                Miles of Trail
+            </dt>
+            <dd>
+                @Model.Park.MilesOfTrail
+            </dd>
+            <dt>
+                Campsites
+            </dt>
+            <dd>
+                @Model.Park.NumberOfCampsites
+            </dd>
+            <dt>
+                Climate
+            </dt>
+            <dd>
+                @Model.Park.Climate
+            </dd>
+            <dt>
+                Year Founded
+            </dt>
+            <dd>
+                @Model.Park.YearFounded
+            </dd>
+            <dt>
+                Annual Visitors
+            </dt>
+            <dd>
+                @Model.Park.AnnualVisitorCount
+            </dd>
+
+            <dt>
+                Entry Fee
+            </dt>
+            <dd>
+                @Model.Park.EntryFee)
+            </dd>
+            <dt>
+                Number of Animal Species
+            </dt>
+            <dd>
+                @Model.Park.NumberOfAnimalSpecies)
+            </dd>
+        </dl>
+    </div>
+
     @*need to make 2 separate forms, can just be a button, that can contain the info and pass it to the action. think about hidden fields in the form. also think of passing the current park.*@
 
 
     <form asp-action="Temperature">
-        <input type="hidden" name="parkCode" value ="@Model.Park.ParkCode">
-        <input type="hidden"  name="tempSettings" value="F">
+        <input type="hidden" name="parkCode" value="@Model.Park.ParkCode">
+        <input type="hidden" name="tempSettings" value="F">
         <input type="submit" value="Farenheit">
     </form>
     <form asp-action="Temperature">
@@ -253,116 +175,48 @@
 
     @*/////////////////////WEATHER BOX///////////////////////////*@
 
-    <div class="lt-grid-container">
-        <div>
-            <div class="parkinfo">
-                <dl class="dl-horizontal">
-                    <h2>Info</h2>
-                    <dt>
-                        State
-                    </dt>
-                    <dd>
-                        @Model.Park.State
-                    </dd>
-                    <dt>
-                        Acreage
-                    </dt>
-                    <dd>
-                        @Model.Park.Acreage
-                    </dd>
-                    <dt>
-                        Elevation (ft)
-                    </dt>
-                    <dd>
-                        @Model.Park.ElevationInFeet
-                    </dd>
-                    <dt>
-                        Miles of Trail
-                    </dt>
-                    <dd>
-                        @Model.Park.MilesOfTrail
-                    </dd>
-                    <dt>
-                        Campsites
-                    </dt>
-                    <dd>
-                        @Model.Park.NumberOfCampsites
-                    </dd>
-                    <dt>
-                        Climate
-                    </dt>
-                    <dd>
-                        @Model.Park.Climate
-                    </dd>
-                    <dt>
-                        Year Founded
-                    </dt>
-                    <dd>
-                        @Model.Park.YearFounded
-                    </dd>
-                    <dt>
-                        Annual Visitors
-                    </dt>
-                    <dd>
-                        @Model.Park.AnnualVisitorCount
-                    </dd>
 
-                    <dt>
-                        Entry Fee
-                    </dt>
-                    <dd>
-                        @Model.Park.EntryFee)
-                    </dd>
-                    <dt>
-                        Number of Animal Species
-                    </dt>
-                    <dd>
-                        @Model.Park.NumberOfAnimalSpecies)
-                    </dd>
-                </dl>
+
+    <div class="Weather">
+
+        <div class="days1">
+            <div class="day1">Today</div>
+            <div class="low1">Low: @Model.Weather[0].Low  &nbsp;&nbsp;   High: @Model.Weather[0].High</div>
+
+            <div class="pic1"><img src="~/images/weather/@Model.Weather[0].WeatherImage" /></div>
+            <div class="message1">@Model.Weather[0].TempRecommendation @Model.Weather[0].WeatherReccomendation </div>
+        </div>
+        <div class="days">
+            <div class="day">Tomorrow</div>
+            <div class="low">Low: @Model.Weather[1].Low   &nbsp;&nbsp;   High: @Model.Weather[1].High</div>
+
+            <div class="pic"><img src="~/images/weather/@Model.Weather[1].WeatherImage" /></div>
+            <div class="message">@Model.Weather[1].TempRecommendation @Model.Weather[1].WeatherReccomendation </div>
+        </div>
+        <div class="days">
+            <div class="day">The Day After Tomorrow</div>
+            <div class="low">Low: @Model.Weather[2].Low &nbsp;&nbsp;   High: @Model.Weather[2].High</div>
+
+            <div class="pic"><img src="~/images/weather/@Model.Weather[2].WeatherImage" /></div>
+            <div class="message">@Model.Weather[2].TempRecommendation @Model.Weather[2].WeatherReccomendation </div>
+        </div>
+        <div class="days">
+            <div class="day">The Day After That</div>
+            <div class="low">Low: @Model.Weather[3].Low  &nbsp;&nbsp;  High: @Model.Weather[3].High</div>
+
+            <div class="pic"><img src="~/images/weather/@Model.Weather[3].WeatherImage" /></div>
+            <div class="message">@Model.Weather[3].TempRecommendation @Model.Weather[3].WeatherReccomendation </div>
+        </div>
+        <div class="days">
+            <div class="day">4 Days From Now</div>
+            <div class="low">
+                Low: @Model.Weather[4].Low  &nbsp;&nbsp;  High: @Model.Weather[4].High/div>
+
+                <div class="pic"><img src="~/images/weather/@Model.Weather[4].WeatherImage" /></div>
+                <div class="message">@Model.Weather[4].TempRecommendation @Model.Weather[4].WeatherReccomendation </div>
             </div>
         </div>
-        <div class="Weather"><h2>Weather</h2></div>
-
-        <div class="day1">
-            <div class="day">Today</div>
-            <div class="low">Low: @Model.Weather[0].Low</div>
-            <div class="high">High: @Model.Weather[0].High</div>
-            <div class="pic"><img src="~/images/weather/@Model.Weather[0].WeatherImage" /></div>
-            <div class="message">@Model.Weather[0].TempRecommendation @Model.Weather[0].WeatherReccomendation </div>
-        </div>
-        <div class="day-2">
-            <div class="day2">Tomorrow</div>
-            <div class="low2">Low: @Model.Weather[1].Low</div>
-            <div class="high2">High: @Model.Weather[1].High</div>
-            <div class="pic2"><img src="~/images/weather/@Model.Weather[1].WeatherImage" /></div>
-            <div class="message2">@Model.Weather[1].TempRecommendation @Model.Weather[1].WeatherReccomendation </div>
-        </div>
-        <div class="day-3">
-            <div class="day3">The Day After Tomorrow</div>
-            <div class="low3">Low: @Model.Weather[2].Low</div>
-            <div class="high3">High: @Model.Weather[2].High</div>
-            <div class="pic3"><img src="~/images/weather/@Model.Weather[2].WeatherImage" /></div>
-            <div class="message3">@Model.Weather[2].TempRecommendation @Model.Weather[2].WeatherReccomendation </div>
-        </div>
-        <div class="day-4">
-            <div class="day4">The Day After That</div>
-            <div class="low4">Low: @Model.Weather[3].Low</div>
-            <div class="high4">High: @Model.Weather[3].High</div>
-            <div class="pic4"><img src="~/images/weather/@Model.Weather[3].WeatherImage" /></div>
-            <div class="message4">@Model.Weather[3].TempRecommendation @Model.Weather[3].WeatherReccomendation </div>
-        </div>
-        <div class="day-5">
-            <div class="day5">4 Days From Now</div>
-            <div class="low5">Low: @Model.Weather[4].Low</div>
-            <div class="high5">High: @Model.Weather[4].High</div>
-            <div class="pic5"><img src="~/images/weather/@Model.Weather[4].WeatherImage" /></div>
-            <div class="message5">@Model.Weather[4].TempRecommendation @Model.Weather[4].WeatherReccomendation </div>
-        </div>
-
-
     </div>
-
 
 
 </fullpage>
