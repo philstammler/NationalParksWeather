@@ -38,6 +38,7 @@ namespace Capstone.Web.Controllers
             mymodel.Park = parkDao.GetPark(parkCode);
 
             mymodel.Weather = parkDao.GetParkWeather(parkCode);
+          
 
             if (GetCurrentTempSettings() == "C")
 
@@ -77,20 +78,31 @@ namespace Capstone.Web.Controllers
             return View(surveys);
         }
 
-        [HttpGet]
-        public IActionResult Temperature()
-        {
-            Temperature model = new Temperature();
-            model.TempSettings = GetCurrentTempSettings();
-            return View(model);
-        }
+        // temperature stuff 
+
+        //[HttpGet]
+        //public IActionResult Temperature()
+        //{
+        //    Temperature model = new Temperature();
+        //    model.TempSettings = GetCurrentTempSettings();
+        //    return View(model);
+        //}
 
         [HttpPost]
-        public IActionResult Temperature(Temperature model)
+        public IActionResult Temperature(string parkCode, string tempSettings)
         {
-            SaveCurrentTempSettings(model.TempSettings);
-            return RedirectToAction("Index");
+           
+            SaveCurrentTempSettings(tempSettings);
+            return RedirectToAction("Detail",new { parkCode = parkCode });
         }
+
+        //[HttpPost]
+        ////need to make property in temperature that holds parkcode.
+        //public IActionResult Temperature(Temperature model)
+        //{
+        //    SaveCurrentTempSettings(model.TempSettings);
+        //    return RedirectToAction("Detail" , model.ParkCode);
+        //}
 
         private string GetCurrentTempSettings()
         {
@@ -108,6 +120,12 @@ namespace Capstone.Web.Controllers
         {
             HttpContext.Session.SetString(TEMP_SETTING_SESSION_KEY, setting);
         }
+
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
