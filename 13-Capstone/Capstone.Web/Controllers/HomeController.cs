@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
 using Capstone.Web.DAL;
-
 using System.Dynamic;
-
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
 
@@ -40,6 +38,16 @@ namespace Capstone.Web.Controllers
             mymodel.Park = parkDao.GetPark(parkCode);
 
             mymodel.Weather = parkDao.GetParkWeather(parkCode);
+
+            if (GetCurrentTempSettings() == "C")
+
+            {
+                foreach (ParkWeather weather in mymodel.Weather)
+                {
+                    weather.Low = (int)((weather.Low - 32.0) * (5.0 / 9.0));
+                    weather.High = (int)((weather.High - 32.0) * (5.0 / 9.0));
+                }
+            }
 
 
             return View(mymodel);
@@ -96,7 +104,7 @@ namespace Capstone.Web.Controllers
             return setting;
         }
 
-        private void SaveCurrentTempSettings(string setting)
+        private void SaveCurrentTempSettings(string setting)//this is our f or our c
         {
             HttpContext.Session.SetString(TEMP_SETTING_SESSION_KEY, setting);
         }
