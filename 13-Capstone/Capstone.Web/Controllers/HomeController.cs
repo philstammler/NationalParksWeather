@@ -30,15 +30,12 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
-
         public IActionResult Detail(string parkCode)
         {
-
             dynamic mymodel = new ExpandoObject();
             mymodel.Park = parkDao.GetPark(parkCode);
 
             mymodel.Weather = parkDao.GetParkWeather(parkCode);
-          
 
             if (GetCurrentTempSettings() == "C")
 
@@ -49,7 +46,6 @@ namespace Capstone.Web.Controllers
                     weather.High = (int)((weather.High - 32.0) * (5.0 / 9.0));
                 }
             }
-
 
             return View(mymodel);
         }
@@ -78,15 +74,7 @@ namespace Capstone.Web.Controllers
             return View(surveys);
         }
 
-        // temperature stuff 
-
-        //[HttpGet]
-        //public IActionResult Temperature()
-        //{
-        //    Temperature model = new Temperature();
-        //    model.TempSettings = GetCurrentTempSettings();
-        //    return View(model);
-        //}
+    //code that deals with temperature converstion below
 
         [HttpPost]
         public IActionResult Temperature(string parkCode, string tempSettings)
@@ -95,14 +83,6 @@ namespace Capstone.Web.Controllers
             SaveCurrentTempSettings(tempSettings);
             return RedirectToAction("Detail",new { parkCode = parkCode });
         }
-
-        //[HttpPost]
-        ////need to make property in temperature that holds parkcode.
-        //public IActionResult Temperature(Temperature model)
-        //{
-        //    SaveCurrentTempSettings(model.TempSettings);
-        //    return RedirectToAction("Detail" , model.ParkCode);
-        //}
 
         private string GetCurrentTempSettings()
         {
@@ -120,11 +100,6 @@ namespace Capstone.Web.Controllers
         {
             HttpContext.Session.SetString(TEMP_SETTING_SESSION_KEY, setting);
         }
-
-
-
-
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

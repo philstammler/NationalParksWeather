@@ -62,10 +62,7 @@ namespace Capstone.Web.DAL
                         park.EntryFee = reader["entryFee"] as decimal? ?? default(decimal);
                         park.NumberOfAnimalSpecies = reader["numberOfAnimalSpecies"] as int? ?? default(int);
 
-
                         parks.Add(MapRowToPark(reader));
-
-
                     }
                 }
             }
@@ -108,14 +105,11 @@ namespace Capstone.Web.DAL
 
                 string sql = $"SELECT * FROM park WHERE parkCode = @parkCode";
 
-
-
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@parkCode", parkCode);
                 // Execute the command
                 SqlDataReader reader = cmd.ExecuteReader();
-
 
                 // Loop through each row
                 while (reader.Read())
@@ -187,21 +181,6 @@ namespace Capstone.Web.DAL
             }
             return weather;
         }
-
-
-        //private ParkWeather MapRowToWeather(SqlDataReader reader)
-        //{
-        //    return new ParkWeather()
-        //    {
-        //        ParkCode = Convert.ToString(reader["parkCode"]),
-        //        FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
-        //        Low = Convert.ToInt32(reader["low"]),
-        //        High = Convert.ToInt32(reader["high"]),
-        //        Forecast = Convert.ToString(reader["forecast"]),
-        //        WeatherImage = 
-        //    };
-        //}
-
 
         public List<SelectListItem> GetParkSelectList()
         {
